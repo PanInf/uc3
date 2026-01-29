@@ -66,3 +66,63 @@ na poziomie pozwalającym robić samemu jakieś w miarę proste projekty.
 W tej chwili każdy z was tworzy swojego brancha o nazwie odpowiednio pra1 pra2 zgodnie z przydziałem
 no i komituje swojego brancha. 
 Powtarzam - w main nic nie komitujecie! Nic tam nie zmieniacie.
+
+------------------------
+3. .gitignore
+------------------------
+
+Dla was najlepszy gitignore to takie cos:
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+!.gitkeep
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+.DS_Store?
+Thumbs.db
+Desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build
+dist/
+build/
+
+
+Wyjaśnienie najważniejszych:
+
+node_modules/ - zależności npm (duże, nie commitujemy)
+.env - dane wrażliwe (PORT, DB_NAME)
+*.db - bazy danych SQLite (każdy uczeń ma swoją lokalnie)
+!.gitkeep - wyjątek - commituj .gitkeep mimo że ignorujemy wszystko w databases/
+package-lock.json - opcjonalnie, jeśli chcesz żeby każdy miał najnowsze wersje (można zostawić)
+
+Więc dodajcie taki plik - wiadomo z kropka na początku do swojego floderu pra1 .... 
+
+zakomitujcie to i wyslijcie na remote
+
+
