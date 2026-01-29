@@ -126,3 +126,42 @@ Więc dodajcie taki plik - wiadomo z kropka na początku do swojego floderu pra1
 zakomitujcie to i wyslijcie na remote
 
 
+------------------------
+4. .backend czesc 1
+------------------------
+cd pra1
+# Utwórz .gitignore w głównym folderze pra1/
+```
+```
+pra1/
+├── .gitignore          ← NOWY
+├── backend/
+│   ├── src/
+│   └── databases/
+└── frontend/
+
+
+cd backend              ← Wejdź DO backend/
+npm init -y             ← Wywołaj TUTAJ
+```
+```
+pra1/
+├── .gitignore
+├── backend/
+│   ├── src/
+│   ├── databases/
+│   └── package.json    ← NOWY (powstał w backend/)
+
+
+npm install hono @hono/node-server better-sqlite3 dotenv
+```
+```
+pra1/
+├── .gitignore
+├── backend/
+│   ├── src/
+│   ├── databases/
+│   ├── node_modules/       ← NOWY (zignorowany przez .gitignore)
+│   ├── package.json
+│   └── package-lock.json   ← NOWY
+
