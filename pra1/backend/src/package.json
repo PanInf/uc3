@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "3": "^2.1.0",
+    "hono": "^4.11.7",
+    "sqlite": "^5.1.1"
+  }
 }
