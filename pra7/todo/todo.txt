@@ -1,0 +1,68 @@
+Projekt: Expense Tracker (Tracker Wydatków)
+Opis projektu
+Aplikacja do śledzenia osobistych wydatków z kategoriami, datami i możliwością przeglądania statystyk.
+Funkcjonalności:
+
+Dodawanie wydatków (kwota, kategoria, opis, data)
+Wyświetlanie listy wydatków
+Usuwanie wydatków
+Filtrowanie po kategorii
+Podsumowanie wydatków (suma ogólna, suma per kategoria)
+
+Stack technologiczny:
+
+Backend: Node.js + Hono
+Database: SQLite (plik databases/pra{x}.db dla każdego z was)
+Frontend: HTML + CSS + Vanilla JavaScript
+
+------------------------
+1. Założenia wstępne
+------------------------
+
+Struktura kazdego z waszych projektów w branchu wyglada tak:
+
+Struktura projektu
+pra{x}/
+├── backend/
+│   ├── src/
+│   │   ├── index.js           # Główny plik serwera
+│   │   ├── db.js              # Obsługa bazy danych
+│   │   └── routes.js          # Endpointy API
+│   ├── databases/
+│   │   ├── pra1.db           # Baza danych dla pra1
+│   │   ├── pra2.db           # itd...
+│   └── package.json
+├── frontend/
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+├── .gitignore
+└── README.md
+
+A całe repo wyglądac bedzie tak: 
+uc3/
+├── todo/  (to jest ode mnie) - moze dodatkowo zaloze inny folder z moją pracą
+├── pra1/
+├── pra2/
+├── pra3/
+├── pra4/
+├── pra5/
+├── pra6/
+└── pra7/
+
+------------------------
+2. Założenia dalsze - BHP projektowe
+------------------------
+
+Na głównej gałęzi main nic nie commitujecie!!! Tylko na swoich branchach. 
+Na głównej gałęzi oraz w komuniatorze beda infomacje dla was co robić, jak robić itp.
+Proszę się tego trzymać.
+Ten projekt każdy robi samodzielnie. Celem jest nauczyć się JS i React 
+na poziomie pozwalającym robić samemu jakieś w miarę proste projekty.
+
+------------------------
+3. Branche
+------------------------
+W tej chwili każdy z was tworzy swojego brancha o nazwie odpowiednio pra1 pra2 zgodnie z przydziałem
+no i komituje swojego brancha. 
+Powtarzam - w main nic nie komitujecie! Nic tam nie zmieniacie.
