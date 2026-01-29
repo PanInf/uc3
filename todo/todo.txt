@@ -50,3 +50,19 @@ uc3/
 ├── pra6/
 └── pra7/
 
+------------------------
+2. Założenia dalsze - BHP projektowe
+------------------------
+
+Na głównej gałęzi main nic nie commitujecie!!! Tylko na swoich branchach. 
+Na głównej gałęzi oraz w komuniatorze beda infomacje dla was co robić, jak robić itp.
+Proszę się tego trzymać.
+Ten projekt każdy robi samodzielnie. Celem jest nauczyć się JS i React 
+na poziomie pozwalającym robić samemu jakieś w miarę proste projekty.
+
+------------------------
+3. Branche
+------------------------
+W tej chwili każdy z was tworzy swojego brancha o nazwie odpowiednio pra1 pra2 zgodnie z przydziałem
+no i komituje swojego brancha. 
+Powtarzam - w main nic nie komitujecie! Nic tam nie zmieniacie.
