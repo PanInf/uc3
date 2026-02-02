@@ -8,8 +8,6 @@ dotenv.config()
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const dbPath = path.join(__dirname, '../database', process.env.DB_NAME)
 
-
-
 const db = new Database(dbPath)
 
 db.exec(`
@@ -33,6 +31,6 @@ db.exec(`
 
 export const getAllExpanses = () => {
     return db.prepare(`
-        SELECT * FROM Expanses
+        SELECT * FROM Expenses
         `).all();
 }
