@@ -30,3 +30,9 @@ db.exec(`
     INSERT INTO Expenses (category_id, Name, Description, Amount)
     VALUES (2, 'Obiad', 'Lunch w pracy', 32.00);
     `)
+
+export const getAllExpanses = () => {
+    return db.prepare(`
+        SELECT * FROM Expanses
+        `).all();
+}
