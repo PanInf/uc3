@@ -6,3 +6,5 @@ const app = new Hono()
 app.get('/expenses', (c) => {
     return c.json(getAllExpenses())
 })
+
+export default app
