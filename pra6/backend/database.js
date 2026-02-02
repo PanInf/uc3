@@ -10,7 +10,7 @@ const dbPath = path.join(dirname, '/database', process.env.DB_NAME)
 const db = new Database(dbPath)
 
 db.exec(`
-    CREATE TABLE Expenses (
+    CREATE TABLE IF NOT EXISTS Expenses (
     ExpenseID INTEGER PRIMARY KEY AUTOINCREMENT,
     category_id INTEGER NOT NULL,
     Name TEXT,
@@ -27,3 +27,8 @@ db.exec(`
     INSERT INTO Expenses (category_id, Name, Description, Amount)
     VALUES (2, 'Obiad', 'Lunch w pracy', 32.00);
     `)
+
+export const getAllExpenses = () => {
+    return db.prepare(`
+        SELECT * FROM Expenses`).all();
+}
