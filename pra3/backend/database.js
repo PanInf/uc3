@@ -13,7 +13,7 @@ const DB = new Database(DBpath)
 
 DB.exec(
     `CREATE TABLE IF NOT EXISTS Expenses (
-        ExpenseID INTEGER PRIMARY KEY ,
+        ExpenseID INTEGER PRIMARY KEY AUTOINCREMENT,
         CategoryID INTEGER,Name VARCHAR(50),
         Description VARCHAR(200),
         Amount REAL,
@@ -22,13 +22,17 @@ DB.exec(
 );
 
 DB.exec(
-    `INSERT INTO Expenses (ExpenseID,CategoryID,Name,Description,Amount,Date) 
-        VALUES (1,1,'www','wwwwwwwwwwwww',2500,2023-01-22)`
+    `INSERT INTO Expenses (CategoryID,Name,Description,Amount,Date) 
+        VALUES (1,'www','wwwwwwwwwwwww',2500,2023-01-22)`
 );
 
 DB.exec(
-    `INSERT INTO Expenses (ExpenseID,CategoryID,Name,Description,Amount,Date) 
-        VALUES (2,2,'ww1w','wwwwww2wwwwwww',2500,2023-01-22)`
+    `INSERT INTO Expenses (CategoryID,Name,Description,Amount,Date) 
+        VALUES (2,'ww1w','wwwwww2wwwwwww',2500,2023-01-22)`
 );
 
-// DB.each("SELECT * FROM Expenses", (err, row) => { console.log(row); });
+export const getAllExpenses = () => {
+    return DB.prepare(
+        `SELECT * FROM Expenses`
+    ).all();
+}
