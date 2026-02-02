@@ -1,44 +1,29 @@
-import path from 'path'
-import {fileURLToPath} from 'url'
-import dotenv from 'dotenv'
 import Database from 'better-sqlite3'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import dotenv from 'dotenv'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dbpath = path.join(__dirname,"../database", process.env.DB_NAME)
-const db = new Database(dbpath)
+dotenv.config()
 
-db.exec(
-    `CREATE TABLE expenses (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+const dirname = path.dirname(fileURLToPath(import.meta.url))
+const dbPath = path.join(dirname, '../database', process.env.DB_NAME)
+const db = new Database(dbPath)
+
+db.exec(`
+    CREATE TABLE Expenses (
+    ExpenseID INTEGER PRIMARY KEY AUTOINCREMENT,
     category_id INTEGER NOT NULL,
-    amount      REAL NOT NULL, 
-    description TEXT,
-    expense_date DATE NOT NULL, 
-    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP)`
-)
+    Name TEXT,
+    Description TEXT,
+    Amount REAL)
+    `)
 
-const insertExpense = `
-    INSERT INTO expenses (category_id, amount, description, expense_date)
-    VALUES (?, ?, ?, ?)
-`;
+db.exec(`
+    INSERT INTO Expenses (category_id, Name, Description, Amount)
+    VALUES (1, 'Kawa', 'Poranna kawa na mieście', 15.50);
+    `)
 
-db.run(insertExpense, [1, 50.25, 'Zakupy spożywcze', '2026-02-01']);
-db.run(insertExpense, [2, 15.00, 'Bilet autobusowy', '2026-02-02']);
-
-function getExpenses(callback) {
-    const query = `SELECT * FROM expenses`;
-
-    db.all(query, [], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err, null);
-            return;
-        }
-        callback(null, rows);
-    });
-}
-
-getExpenses((err, expenses) => {
-    if (err) return;
-    console.log('Wydatki:', expenses);
-});
+db.exec(`
+    INSERT INTO Expenses (category_id, Name, Description, Amount)
+    VALUES (2, 'Obiad', 'Lunch w pracy', 32.00);
+    `)
