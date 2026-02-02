@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
-const dbPath = path.join(dirname, '../database', process.env.DB_NAME)
+const dbPath = path.join(dirname, 'database', process.env.DB_NAME)
 
 const db = new Database(dbPath)
 
@@ -29,12 +29,12 @@ const insertExpense = db.prepare(`
 insertExpense.run(1, 'Zakupy', 'Jedzenie', 300.00, '2026-01-10')
 insertExpense.run(2, 'Transport', 'Bilet miesięczny', 99.00, '2026-01-05')
 
-function getAllExpenses() {
+export function getAllExpenses() {
     const sum = db.prepare('SELECT * FROM Expenses')
     return sum.all()
 }
 
+
 const expenses = getAllExpenses()
 console.log(expenses)
 
-db.close()

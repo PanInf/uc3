@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { getAllExpenses } from './db.js'
+import { getAllExpenses } from './database.js'
 
 const app = new Hono()
 
