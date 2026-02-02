@@ -9,11 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@hono/node-server": "^1.19.9",
     "better-sqlite3": "^12.6.2",
-    "dotenv": "^17.2.3",
+    "dotenv": "^8.6.0",
     "hono": "^4.11.7"
   }
 }
