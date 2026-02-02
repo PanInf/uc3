@@ -1,8 +1,11 @@
+
 import { Hono } from "hono";
-import { getAllExpenses } from "./database";
+import { getAllExpenses } from "./database.js";
 
-const app = new Hono();
+const App = new Hono();
 
-app.get('/expenses',(c) => {
-    return c.json(getAllExpenses)
+App.get('/expenses',(c) => {
+    return c.json(getAllExpenses())
 })
+
+export default App
