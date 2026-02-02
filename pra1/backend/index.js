@@ -1,9 +1,13 @@
-import express from 'express';
-const app = express();
-app.get('/expanses', (req, res) => {
-  res.json([
-    { id: 1, name: "Chleb", price: 5 },
-    { id: 2, name: "Mleko", price: 3 }
-  ]);
-});
-app.listen(3001, () => console.log('Server running on http://localhost:3001'));
+import { Hono } from "hono";
+import { serve } from "@hono/node-server";
+import { getAllExpenses } from "./database.js";
+import dotenv from 'dotenv';
+dotenv.config()
+const app = new Hono();
+app.get('/expenses',(c) => {
+    return c.json(getAllExpenses())
+})
+serve({ 
+    fetch: app.fetch, 
+    port: process.env.PORT
+})
