@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
-const dbPath = path.join(dirname, '../database', process.env.DB_NAME)
+const dbPath = path.join(dirname, '/database', process.env.DB_NAME)
 const db = new Database(dbPath)
 
 db.exec(`
