@@ -23,4 +23,10 @@ INSERT INTO Expenses (category_id, Name, Description, Amount, Date) VALUES
 `);
 const expenses = db.prepare('SELECT * FROM Expenses').all();
 console.log(expenses);
+export const getAllExpanses = () => {
+    return db.prepare(`
+        SELECT * FROM Expenses
+    `).all();
+}
+
 db.close()
