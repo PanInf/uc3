@@ -1,6 +1,6 @@
-import { serve } from "@hono/node-server";
-import app from "./server.js";
-import dotenv from "dotenv";
+const { serve } = require('@hono/node-server');
+const app = require('./server.js');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -8,7 +8,7 @@ const PORT = Number(process.env.PORT) || 3004;
 
 serve({
   fetch: app.fetch,
-  port: PORT,
+  port: PORT
 });
 
 console.log(`Serwer wystartował → http://localhost:${PORT}/expenses`);
