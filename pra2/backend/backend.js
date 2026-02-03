@@ -14,10 +14,11 @@ db.exec(
     'CREATE TABLE IF NOT EXISTS Expenses (ExpenseID INTEGER PRIMARY KEY,CategoryID INTEGER,Name VARCHAR(50),Description VARCHAR(200),Amount REAL,Date TEXT)'
 );
 
-db.exec(`
-  INSERT INTO Expenses (CategoryID, Name, Description, Amount, Date)
-  VALUES (1, 'ww', 'www', 25, '2026-02-02')
-`);
+// db.exec(`
+//   INSERT INTO Expenses (CategoryID, Name, Description, Amount, Date)
+//   VALUES (1, 'Biedronka', 'Zakupy', 25, '2026-02-02')
+// `);
 
-const rows = db.prepare(`SELECT * FROM Expenses`).all();
-console.log(rows);
+export function getAllExpenses() {
+  return db.prepare('SELECT * FROM Expenses').all()
+}

@@ -6,5 +6,7 @@ dotenv.config();
 
 serve({
     fetch: app.fetch,
-    port: process.env.PORT
+    port: Number(process.env.PORT) || 3002
 });
+
+console.log(`🚀 Backend działa na http://localhost:${Number(process.env.PORT) || 3002}`);
