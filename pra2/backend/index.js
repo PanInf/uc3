@@ -8,5 +8,3 @@ serve({
     fetch: app.fetch,
     port: Number(process.env.PORT) || 3002
 });
-
-console.log(`🚀 Backend działa na http://localhost:${Number(process.env.PORT) || 3002}`);
