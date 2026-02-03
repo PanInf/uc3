@@ -14,10 +14,24 @@ db.exec(
     'CREATE TABLE IF NOT EXISTS Expenses (ExpenseID INTEGER PRIMARY KEY,CategoryID INTEGER,Name VARCHAR(50),Description VARCHAR(200),Amount REAL,Date TEXT)'
 );
 
-// db.exec(`
-//   INSERT INTO Expenses (CategoryID, Name, Description, Amount, Date)
-//   VALUES (1, 'Biedronka', 'Zakupy', 25, '2026-02-02')
-// `);
+export function addExpense(data) {
+  const stmt = db.prepare(
+    'INSERT INTO Expenses (CategoryID, Name, Description, Amount, Date) VALUES (?, ?, ?, ?, ?)'
+  );
+  return stmt.run(data.CategoryID, data.Name, data.Description, data.Amount, data.Date);
+}
+
+export function deleteExpense(id) {
+  const stmt = db.prepare('DELETE FROM Expenses WHERE ExpenseID = ?');
+  return stmt.run(id);
+}
+
+export function updateExpense(id, data) {
+  const stmt = db.prepare(
+    'UPDATE Expenses SET CategoryID = ?, Name = ?, Description = ?, Amount = ?, Date = ? WHERE ExpenseID = ?'
+  );
+  return stmt.run(data.CategoryID, data.Name, data.Description, data.Amount, data.Date, id);
+}
 
 export function getAllExpenses() {
   return db.prepare('SELECT * FROM Expenses').all()
