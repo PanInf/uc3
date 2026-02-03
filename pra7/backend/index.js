@@ -1,15 +1,16 @@
-import { Hono } from 'hono'
+import express from 'express'
+import cors from 'cors'
 import { getAllExpenses } from './database/database.js'
-import dotenv from 'dotenv'
-dotenv.config()
-const app = new Hono()
-app.get('/expenses', (c) => {
-  const expenses = getAllExpenses()
-  return c.json(expenses)
+
+const app = express()
+const PORT = 3001
+
+app.use(cors())
+
+app.get('/expenses', (req, res) => {
+  res.json(getAllExpenses())
 })
-const port = process.env.PORT || 3001
-console.log(`Serwer działa na http://localhost:${port}`)
-export default {
-  port,
-  fetch: app.fetch
-}
+
+app.listen(PORT, () => {
+  console.log(`Serwer działa na http://localhost:${PORT}`)
+})
