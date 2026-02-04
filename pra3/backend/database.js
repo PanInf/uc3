@@ -14,25 +14,33 @@ const DB = new Database(DBpath)
 DB.exec(
     `CREATE TABLE IF NOT EXISTS Expenses (
         ExpenseID INTEGER PRIMARY KEY AUTOINCREMENT,
-        CategoryID INTEGER,Name VARCHAR(50),
+        CategoryID INTEGER,
+        Name VARCHAR(50),
         Description VARCHAR(200),
-        Amount REAL,
-        Date TEXT
+        Amount REAL
     )`
 );
 
-DB.exec(
-    `INSERT INTO Expenses (CategoryID,Name,Description,Amount,Date) 
-        VALUES (1,'www','wwwwwwwwwwwww',2500,2023-01-22)`
-);
+const deleteExpense = (id) => {
+  return DB.prepare('DELETE FROM Expenses WHERE ExpenseID = ?').run(id);
+};
 
-DB.exec(
-    `INSERT INTO Expenses (CategoryID,Name,Description,Amount,Date) 
-        VALUES (2,'ww1w','wwwwww2wwwwwww',2500,2023-01-22)`
-);
+const addExpense = (name, description, amount, categoryID) => {
+  return DB.prepare(
+    'INSERT INTO Expenses (Name, Description, Amount, CategoryID) VALUES (?, ?, ?, ?)'
+  ).run(name, description, amount, categoryID);
+};
+
+const updateExpense = (expenseID, name, description, amount, categoryID) => {
+  return DB.prepare(
+    'UPDATE Expenses SET Name = ?, Description = ?, Amount = ?, CategoryID = ? WHERE ExpenseID = ?'
+  ).run(name, description,amount, categoryID, expenseID);
+};
 
 export const getAllExpenses = () => {
     return DB.prepare(
-        `SELECT * FROM Expenses`
+        'SELECT * FROM Expenses'
     ).all();
 }
+
+export default {addExpense, deleteExpense, updateExpense};
